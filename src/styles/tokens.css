@@ -1,0 +1,60 @@
+:root {
+  /* Colors — bg/fg deferred to shadcn :root and .dark */
+  --color-accent: #FF6B00;
+  --color-muted: rgba(0, 0, 0, 0.06);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-hover: #383838;
+  --color-hover-subtle: rgba(0, 0, 0, 0.04);
+  --color-zinc-50: #fafafa;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-600: #52525b;
+  --color-zinc-950: #09090b;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-sf-pro: 'SF Pro', system-ui, sans-serif;
+  --font-sf-pro-rounded: 'SF Pro Rounded', system-ui, sans-serif;
+  --font-sf-mono: 'SF Mono', monospace;
+  --text-sm: 0.9em;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-3xl: 1.875rem;
+  --leading-base: 2rem;
+  --leading-relaxed: 2.5rem;
+
+  /* Spacing */
+  --spacing-px: 1rem;
+  --spacing-py: 2rem;
+
+  /* Navbar */
+  --nb-height: 60px;
+  --nb-px: 2.2rem;
+  --nb-px-mobile: 1.2rem;
+
+  /* Button */
+  --btn-py: 0.55rem;
+  --btn-px: 1.2rem;
+  --icon-btn-py: 0.55rem;
+  --icon-btn-px: 0.7rem;
+
+  /* Shimmer */
+  --shimmer-gradient: linear-gradient(90deg, var(--color-accent) 0%, #ff9a3c 40%, var(--color-accent) 100%);
+  --shimmer-duration: 1.2s;
+
+  /* Radii */
+  --radius-sm: 0.25rem;
+  --radius-full: 9999px;
+
+  /* Sizes */
+  --size-button-h: 3rem;
+  --size-button-w: 158px;
+  --size-max-content: 42rem;
+}
+
+.dark {
+  --color-muted: rgba(255, 255, 255, 0.08);
+  --color-border: rgba(255, 255, 255, 0.145);
+  --color-hover: #cccccc;
+  --color-hover-subtle: #1a1a1a;
+}
