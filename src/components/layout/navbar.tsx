@@ -6,15 +6,15 @@ import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import LogoSvg from "@/components/common/logosvg";
 import { setNavLogoRef } from "@/components/common/loader";
 import { useTheme } from "@/lib/theme";
-import { useLang } from "@/lib/lang";
+import { useLang, t } from "@/lib/lang";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-const links = [
-  { num: "01.", label: "About",      href: "#about" },
-  { num: "02.", label: "Experience", href: "#experience" },
-  { num: "03.", label: "Projects",   href: "#projects" },
-  { num: "04.", label: "Contact",    href: "#contact" },
-];
+const linkDefs = [
+  { num: "01.", key: "about",      href: "#about" },
+  { num: "02.", key: "experience", href: "#experience" },
+  { num: "03.", key: "projects",   href: "#projects" },
+  { num: "04.", key: "contact",    href: "#contact" },
+] as const;
 
 const ease = [0.4, 0, 0.2, 1] as const;
 
@@ -23,6 +23,7 @@ export default function Navbar() {
   const logoRef = useRef<HTMLAnchorElement>(null);
   const { theme, toggle } = useTheme();
   const { lang, setLang } = useLang();
+  const links = linkDefs.map(({ num, key, href }) => ({ num, href, label: t.nav[key][lang] }));
   const { scrollY } = useScroll();
 
   // shrink navbar on scroll
@@ -51,7 +52,7 @@ export default function Navbar() {
         <ul className="nb-links">
           {links.map(({ num, label, href }, i) => (
             <motion.li
-              key={label}
+              key={href}
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 4.3 + i * 0.07, duration: 0.35, ease }}
@@ -112,7 +113,7 @@ export default function Navbar() {
             transition={{ delay: 4.3 + (links.length + 1) * 0.07, duration: 0.35, ease }}
           >
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="nb-resume">
-              <span>Resume</span>
+              <span>{t.nav.resume[lang]}</span>
             </a>
           </motion.li>
         </ul>
@@ -138,7 +139,7 @@ export default function Navbar() {
             <ul className="nb-mlinks">
               {links.map(({ num, label, href }, i) => (
                 <motion.li
-                  key={label}
+                  key={href}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06, duration: 0.3, ease }}
@@ -154,7 +155,7 @@ export default function Navbar() {
                 transition={{ delay: links.length * 0.06, duration: 0.3, ease }}
               >
                 <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="nb-resume">
-                  <span>Resume</span>
+                  <span>{t.nav.resume[lang]}</span>
                 </a>
               </motion.li>
             </ul>
@@ -247,7 +248,9 @@ export default function Navbar() {
           font-family: var(--font-sf-mono);
           font-size: 0.72rem;
           color: var(--color-accent);
+          -webkit-text-fill-color: var(--color-accent);
           margin-right: 0.3rem;
+          font-weight: 600;
         }
 
         .nb-link {
@@ -307,6 +310,8 @@ export default function Navbar() {
           border: 1px solid var(--color-accent);
           border-radius: var(--radius-sm);
           background: transparent;
+          min-width: 6.5rem;
+          text-align: center;
         }
         .nb-resume span {
           display: inline-block;

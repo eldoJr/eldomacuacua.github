@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Loader from "@/components/common/loader";
 import Navbar from "@/components/layout/navbar";
+import SocialSidebar from "@/components/layout/social-sidebar";
 import { ThemeProvider } from "@/lib/theme";
 import { LangProvider } from "@/lib/lang";
 import "./globals.css";
@@ -38,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           })()
         `}} />
       </head>
-      <body className="min-h-full flex flex-col"><ThemeProvider><LangProvider><Loader /><Navbar />{children}</LangProvider></ThemeProvider></body>
+      <body className="min-h-full flex flex-col"><ThemeProvider><LangProvider><Loader /><Navbar /><SocialSidebar />{children}</LangProvider></ThemeProvider></body>
     </html>
   );
 }
