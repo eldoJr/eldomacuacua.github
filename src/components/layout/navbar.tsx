@@ -26,10 +26,7 @@ export default function Navbar() {
   const links = linkDefs.map(({ num, key, href }) => ({ num, href, label: t.nav[key][lang] }));
   const { scrollY } = useScroll();
 
-  // shrink navbar on scroll
-  const height    = useTransform(scrollY, [0, 60], ["var(--nb-height)", "48px"]);
-  const paddingX  = useTransform(scrollY, [0, 60], ["var(--nb-px)", "1.6rem"]);
-  const opacity   = useTransform(scrollY, [0, 60], [0, 1]);  // backdrop opacity
+  const opacity = useTransform(scrollY, [0, 80], [0, 1]);  // backdrop opacity
 
   useEffect(() => {
     setNavLogoRef(logoRef);
@@ -38,7 +35,6 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        style={{ height, paddingLeft: paddingX, paddingRight: paddingX }}
         className="nb"
       >
         {/* frosted backdrop fades in on scroll */}
@@ -112,7 +108,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 4.3 + (links.length + 1) * 0.07, duration: 0.35, ease }}
           >
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="nb-resume">
+            <a href="https://drive.google.com/file/d/1a8KZS2_ce86hEaxNKv514pJpKOz-0l8D/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="nb-resume">
               <span>{t.nav.resume[lang]}</span>
             </a>
           </motion.li>
@@ -154,7 +150,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: links.length * 0.06, duration: 0.3, ease }}
               >
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="nb-resume">
+                <a href="https://drive.google.com/file/d/1a8KZS2_ce86hEaxNKv514pJpKOz-0l8D/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="nb-resume">
                   <span>{t.nav.resume[lang]}</span>
                 </a>
               </motion.li>
@@ -171,6 +167,9 @@ export default function Navbar() {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          height: var(--nb-height);
+          padding-left: var(--nb-px);
+          padding-right: var(--nb-px);
         }
 
         .nb-backdrop {
@@ -180,7 +179,6 @@ export default function Navbar() {
           background: color-mix(in srgb, var(--background) 80%, transparent);
           backdrop-filter: blur(14px);
           -webkit-backdrop-filter: blur(14px);
-          border-bottom: 1px solid var(--color-border);
         }
 
         .nb-logo {
