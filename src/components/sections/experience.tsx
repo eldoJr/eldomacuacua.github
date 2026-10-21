@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useLang } from "@/lib/lang";
+import { SiPython, SiJavascript, SiHtml5, SiCss, SiNumpy, SiPandas, SiTensorflow, SiLinux, SiGit } from "react-icons/si";
+import { FaAws, FaJava, FaDatabase, FaRobot, FaShieldAlt, FaServer, FaCode, FaNetworkWired, FaCloud, FaBrain, FaLaptopCode, FaTrophy, FaWindows } from "react-icons/fa";
 
 const ease = [0.4, 0, 0.2, 1] as const;
 
@@ -214,36 +216,6 @@ export default function Experience() {
         {/* Education + Certifications row */}
         <div className="exp-bottom">
 
-          {/* Education */}
-          <div className="exp-edu">
-            <h3 className="exp-sub-title">
-              <i className="bi bi-mortarboard" />
-              {lang === "EN" ? "Academic Path" : "Percurso Acadêmico"}
-            </h3>
-            <div className="exp-edu-period"><i className="bi bi-calendar3" /> Jul 2021 – May 2028</div>
-            <ul className="exp-edu-list">
-              {[
-                { degree: lang === "EN" ? "Information Technology" : "Tecnologia da Informação",       school: "Parul University" },
-                { degree: lang === "EN" ? "Web Programming Technician" : "Técnico de Programação Web", school: "ITC" },
-                { degree: lang === "EN" ? "IT Support Technician" : "Técnico de Suporte de TI",        school: "ITC" },
-                { degree: lang === "EN" ? "Basic Computing" : "Informática Básica",                   school: "IFPELAC" },
-              ].map((e) => (
-                <li key={e.degree} className="exp-edu-item">
-                  <div className="exp-edu-dot" />
-                  <div className="exp-edu-info">
-                    <span className="exp-edu-degree">{e.degree}</span>
-                    <span className="exp-edu-school">{e.school}</span>
-                  </div>
-                  <span className="exp-edu-badge">CERTIFICATE</span>
-                </li>
-              ))}
-            </ul>
-            <a href="https://drive.google.com/file/d/1a8KZS2_ce86hEaxNKv514pJpKOz-0l8D/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="exp-link">
-              <i className="bi bi-file-earmark-person" />
-              {lang === "EN" ? "Curriculum Vitae" : "Currículo Vitae"}
-            </a>
-          </div>
-
           {/* Certifications */}
           <div className="exp-certs">
             <h3 className="exp-sub-title">
@@ -251,29 +223,32 @@ export default function Experience() {
               {lang === "EN" ? "Licenses & Certifications" : "Licenças & Certificações"}
             </h3>
             <div className="exp-edu-period"><i className="bi bi-calendar3" /> May 2024 – Jun 2028</div>
-            <ul className="exp-edu-list">
+            <ul className="exp-cert-list">
               {[
-                { degree: "Data Privacy Fundamentals",                                    school: "Etrain" },
-                { degree: "Data Visualization with Python",                               school: "Etrain" },
-                { degree: "Java",                                                          school: "HackerRank" },
-                { degree: "Hardware and Operating System Essentials",                     school: "IBM" },
-                { degree: "Hardware and Operating Systems Fundamentals",                  school: "Etrain" },
-                { degree: "Information Technology (IT) Fundamentals",                    school: "IBM" },
-                { degree: "Generative AI Skills for Data Scientists",                     school: "Etrain" },
-                { degree: "Generative AI Skills for Software Developers",                 school: "Etrain" },
-                { degree: "Python",                                                        school: "Etrain" },
-                { degree: "Python for Data Science",                                      school: "IBM" },
-                { degree: "Tech (IT) Support Job Guide: Resume & Interview Preparation",  school: "IBM" },
-                { degree: "AWS Educate Introduction to Generative AI",                    school: "AWS" },
-                { degree: "IT Specialist - HTML and CSS",                                 school: "Certiport" },
-                { degree: "JavaScript",                                                    school: "HackerRank" },
-                { degree: "Vadodara Hackathon 6.0",                                       school: "PU" },
+                { title: "Data Privacy Fundamentals",                     school: "Etrain",     icons: [FaShieldAlt, FaDatabase, FaNetworkWired] },
+                { title: "Data Visualization with Python",                school: "Etrain",     icons: [SiPython, SiPandas, FaDatabase] },
+                { title: "Java",                                           school: "HackerRank", icons: [FaJava, FaCode, FaServer] },
+                { title: "Hardware and Operating System Essentials",      school: "IBM",        icons: [FaServer, SiLinux, FaWindows] },
+                { title: "Hardware and Operating Systems Fundamentals",   school: "Etrain",     icons: [FaServer, SiLinux, FaNetworkWired] },
+                { title: "Information Technology (IT) Fundamentals",     school: "IBM",        icons: [FaNetworkWired, FaShieldAlt, FaCloud] },
+                { title: "Generative AI Skills for Data Scientists",      school: "Etrain",     icons: [FaBrain, SiPython, SiTensorflow, FaRobot] },
+                { title: "Generative AI Skills for Software Developers",  school: "Etrain",     icons: [FaRobot, FaBrain, FaCode, FaCloud] },
+                { title: "Python",                                         school: "Etrain",     icons: [SiPython, FaCode, FaDatabase] },
+                { title: "Python for Data Science",                       school: "IBM",        icons: [SiPython, SiNumpy, SiPandas, FaDatabase] },
+                { title: "Tech (IT) Support Job Guide",                   school: "IBM",        icons: [FaLaptopCode, FaNetworkWired, FaServer] },
+                { title: "AWS Educate Introduction to Generative AI",     school: "AWS",        icons: [FaAws, FaCloud, FaBrain, FaRobot] },
+                { title: "IT Specialist - HTML and CSS",                  school: "Certiport",  icons: [SiHtml5, SiCss, FaCode] },
+                { title: "JavaScript",                                     school: "HackerRank", icons: [SiJavascript, FaCode, FaServer] },
+                { title: "Vadodara Hackathon 6.0",                        school: "PU",         icons: [FaTrophy, FaCode, FaBrain, SiGit] },
               ].map((e) => (
-                <li key={e.degree} className="exp-edu-item">
+                <li key={e.title} className="exp-cert-item">
                   <div className="exp-edu-dot" />
                   <div className="exp-edu-info">
-                    <span className="exp-edu-degree">{e.degree}</span>
+                    <span className="exp-edu-degree">{e.title}</span>
                     <span className="exp-edu-school">{e.school}</span>
+                  </div>
+                  <div className="exp-cert-icons">
+                    {e.icons.map((Icon, i) => <Icon key={i} className="exp-cert-icon" />)}
                   </div>
                   <span className="exp-edu-badge">CERTIFICATE</span>
                 </li>
@@ -517,7 +492,7 @@ export default function Experience() {
         /* bottom row */
         .exp-bottom {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
           gap: 3rem;
           margin-top: 5rem;
           padding-top: 3rem;
@@ -606,6 +581,35 @@ export default function Experience() {
           color: var(--foreground);
           opacity: 0.35;
           margin-top: 1rem;
+        }
+
+        .exp-cert-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .exp-cert-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .exp-cert-icons {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          margin-left: auto;
+        }
+
+        .exp-cert-icon {
+          color: var(--color-accent);
+          opacity: 0.65;
+          font-size: 0.95rem;
+          flex-shrink: 0;
         }
 
         @media (max-width: 768px) {
